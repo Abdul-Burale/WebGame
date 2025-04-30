@@ -1,4 +1,4 @@
-import pygame, sys, os, random, math
+import pygame, sys, os, random, math, asyncio
 
 
 from scripts.entities import PhysicsEntity, Player, Enemy
@@ -7,6 +7,7 @@ from scripts.tilemap  import Tilemap
 from scripts.clouds   import Clouds
 from scripts.particle import Particle
 from scripts.spark    import Spark
+
 # Initialize pygame
 class Game:
     def __init__(self):
@@ -85,7 +86,7 @@ class Game:
         self.dead = 0
         self.transition = -30
 
-    def run(self):
+    async def main(self):
 
         pygame.mixer.music.load('data/music.wav')
         pygame.mixer.music.set_volume(0.5)
@@ -219,5 +220,6 @@ class Game:
             self.screen.blit(pygame.transform.scale(self.display_2, self.screen.get_size()),  screenshake_offset)
             pygame.display.update()
             self.clock.tick(60)
+            await asyncio.sleep(0)
 
-Game().run()
+asyncio.run(Game().main())
