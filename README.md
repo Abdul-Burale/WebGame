@@ -1,55 +1,162 @@
-# 🕹️ 2D Platformer Game
+# Ctrl + Jump
 
-A smooth and stylish pixel-art 2D platformer built with Python and Pygame. Dash, jump, and shoot your way through multiple handcrafted levels filled with enemies, effects, and atmospheric environments.
+A pixel-art 2D platformer built with Python and Pygame.
 
----
+Run, jump, wall-slide, dash, and fight through handcrafted levels filled with enemies, projectiles, particles, screenshake, and retro-style effects.
 
-## 🎮 Features
+## Preview
 
-- Classic platformer movement: run, jump, wall-slide, and dash!
-- Dynamic enemies that patrol and shoot projectiles
-- Particle effects (leaves, sparks, dashing trails)
-- Screenshake and transition animations for added juice
-- Multi-level progression with JSON-based tilemaps
-- Layered rendering: background, silhouettes, and dynamic elements
-- Retro-style graphics and sound effects
+![Ctrl + Jump gameplay screenshot](media/screenshot.png)
 
----
+## Play Online
 
-## 🛠️ Installation
+Play the browser version here:
 
-### Requirements
+```text
+https://abdul-burale.github.io/WebGame/
+```
 
-- Python 3.8+
-- Pygame
+No Python or Pygame installation is required to play the web version.
 
-Install dependencies with:
+The first load may take a few seconds while the browser loads the packaged game files.
+
+## Controls
+
+| Key | Action |
+|---|---|
+| A | Move left |
+| D | Move right |
+| Space | Jump |
+| X | Dash |
+| ESC | Quit |
+
+## How to Run
+
+There are two ways to run the game:
+
+1. Run the browser version locally.
+2. Run the Python source version directly.
+
+## Run the Browser Version Locally
+
+The repository includes a prebuilt browser version of the game.
+
+From the project root folder, run:
+
+```bash
+python -m http.server 8000
+```
+
+Then open this in your browser:
+
+```text
+http://localhost:8000/
+```
+
+If you started the server from the folder above the project, open:
+
+```text
+http://localhost:8000/WebGame/
+```
+
+The browser version does not require installing Pygame or Pygbag. It uses the already-built web files included in the repository.
+
+The important browser build files are:
+
+```text
+index.html
+ctrl+jump-web.apk
+archives/repo/cp312/pygame_static-1.0-cp312-cp312-wasm32_bi_emscripten.whl
+```
+
+## Run the Python Source Version
+
+To run the original Python/Pygame version, install Python and Pygame first.
+
+Install Pygame:
 
 ```bash
 pip install pygame
-Controls
+```
 
-Key	Action
-A	Move Left
-D	Move Right
-Space	Jump
-X	Dash
-ESC	Quit Game
-Code Structure
-Game.py - Core game loop and asset management
+Then run the game from the project root:
 
-scripts/entities.py - Player and enemy behavior
+```bash
+python main.py
+```
 
-scripts/tilemap.py - Tile-based level loading and collision
+On some systems, you may need:
 
-scripts/particle.py - Particle effect system
+```bash
+python3 main.py
+```
 
-scripts/spark.py - Spark effects for collisions
+## Features
 
-scripts/clouds.py - Background cloud parallax
+- Smooth platformer movement
+- Running, jumping, wall-sliding, and dashing
+- Enemy patrols and projectile attacks
+- Particle effects, sparks, leaves, and dash trails
+- Screenshake and transition effects
+- Multi-level progression
+- JSON-based tilemaps
+- Layered rendering with background, silhouettes, and foreground effects
+- Browser-playable build using Pygbag/WebAssembly
 
-scripts/utils.py - Helper functions and animation loader
+## Project Structure
 
-Credits
-Built using Pygame.
-Assets and sound effects are placeholders or original—feel free to replace them with your own!
+```text
+WebGame/
+├── main.py
+├── index.html
+├── ctrl+jump-web.apk
+├── media/
+│   └── screenshot.png
+├── data/
+│   ├── maps/
+│   ├── sfx/
+│   └── music.wav
+├── scripts/
+│   ├── entities.py
+│   ├── tilemap.py
+│   ├── particle.py
+│   ├── spark.py
+│   ├── clouds.py
+│   └── utils.py
+└── archives/
+    └── repo/
+        └── cp312/
+            └── pygame_static-1.0-cp312-cp312-wasm32_bi_emscripten.whl
+```
+
+## Web Build Notes
+
+The browser version was built with Pygbag, which allows Python/Pygame games to run in the browser using WebAssembly.
+
+The web version loads:
+
+```text
+index.html
+```
+
+which then loads the packaged game archive:
+
+```text
+ctrl+jump-web.apk
+```
+
+In this project, `ctrl+jump-web.apk` is not used as a normal Android APK. It is the packaged game archive used by the Pygbag browser runtime.
+
+## Tech Stack
+
+- Python
+- Pygame
+- Pygbag
+- WebAssembly
+- GitHub Pages
+
+## Credits
+
+Built with Python and Pygame.
+
+Assets, sound effects, and level design are either original, placeholders, or used for learning purposes.
